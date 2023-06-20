@@ -20,10 +20,10 @@ const App = () => {
 
 
     return (
-        <div>
+        <>
             <Header/>
             <Outlet/>
-        </div>
+        </>
     );
 };
 
