@@ -8,25 +8,16 @@ import SecureRoute from "./guards/SecureRoute";
 import GuestRoute from "./guards/GuestRoute";
 import LoginPage from "../pages/Auth/LoginPage";
 import LogoutPage from "../pages/Auth/LogoutPage";
+import NotFundPage from "../pages/NotFoundPage/NotFundPage";
 
 
 
 const Routes = () => {
     return (
         <BaseRoutes>
-            <Route path={'/'}>
-                <Route element={<App />}>
-                    <Route element={<SecureRoute/>}>
-                        <Route index element={<HomePage/>}/>
-                        <Route path={'catalog'} element={<CatalogPage/>}/>
-                        <Route path={'logout'} element={<LogoutPage/>}/>
-                    </Route>
-
-                    <Route element={<GuestRoute/>}>
-                        <Route path={'login'} element={<LoginPage/>}/>
-                    </Route>
-                </Route>
-            </Route>
+            <Route path={'/'} element={<HomePage />} />
+            <Route path={'/catalog'} element={<CatalogPage />} />
+            <Route path={'*'} element={<NotFundPage />} />
         </BaseRoutes>
     );
 };
