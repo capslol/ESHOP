@@ -26,7 +26,7 @@ const Form = ({onSubmitForm}) => {
 
     return (
         <div className='container'>
-            <form className='form' action="" onSubmit={handleSubmit(onSubmitForm)}>
+            <form className='form' action="src/components/form" onSubmit={handleSubmit(onSubmitForm)}>
                 <h2>Login</h2>
                 <label htmlFor=""> <span>Email</span>
                     <input {...register('email', {
