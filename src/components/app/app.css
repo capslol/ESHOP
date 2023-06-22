@@ -27,3 +27,8 @@ body{
 body * {
     font-family: "BigShouldersDisplay";
 }
+.wrapper{
+    display: flex;
+    height: calc(100vh - 100px);
+    width: 100vw;
+}

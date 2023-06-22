@@ -9,11 +9,10 @@ import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import {ReactQueryDevtools} from "react-query/devtools";
 import useAccessToken from "../useAccessToken";
 import login from "../../services/service";
+import SideBar from "../sideBar/SideBar";
 
 
 // const queryClient = new QueryClient()
-
-
 
 
 const App = () => {
@@ -23,6 +22,7 @@ const App = () => {
         <>
             <Header/>
             <Outlet/>
+
         </>
     );
 };

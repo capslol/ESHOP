@@ -5,6 +5,7 @@ import React from "react";
 import HomePage from "../pages/Home/HomePage";
 import CatalogPage from "../pages/Catalog/CatalogPage";
 import NotFundPage from "../pages/NotFoundPage/NotFundPage";
+import SinglePage from "../pages/SinglePage/SinglePage";
 
 // import SecureRoute from "./guards/SecureRoute";
 // import GuestRoute from "./guards/GuestRoute";
@@ -18,7 +19,7 @@ const Routes = () => {
         <BaseRoutes>
             <Route path={'/'} element={<App/>}>
                 <Route index element={<HomePage />} />
-                <Route path={'catalog'} element={<CatalogPage />} />
+                <Route path={'catalog/'} element={<CatalogPage />} />
                 <Route path={'*'} element={<NotFundPage />} />
             </Route>
 
