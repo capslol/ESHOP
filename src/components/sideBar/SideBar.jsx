@@ -4,15 +4,18 @@ import './SideBar.css';
 
 const SideBar = ({onSelectCategory}) => {
 
+    const [categories, setCategories] = useState(['Футболки', 'Штаны', 'Платья', 'Верхняя одежда'])
+
 
     return (
         <div className='sidebar'>
             <form className="sidebar__search-bar"><input type="text"/></form>
             <ul className="sidebar__menu">
-                <li onClick={() => onSelectCategory(1)} className="sidebar__menu-item">1</li>
-                <li onClick={() => onSelectCategory(2)} className="sidebar__menu-item">2</li>
-                <li onClick={() => onSelectCategory(3)} className="sidebar__menu-item">3</li>
-                <li onClick={() => onSelectCategory(4)} className="sidebar__menu-item">4</li>
+                {
+                    categories.map((item) => (
+                        <li key={item} onClick={() => onSelectCategory(item)} className="sidebar__menu-item">{item}</li>
+                    ))
+                }
             </ul>
 
         </div>

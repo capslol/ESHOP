@@ -1,32 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import './catalog.css'
+import AppContext from "../appContext";
 
-const Catalog = () => {
-    const [data, setData] = useState([]);
+const Catalog = ({selectedCategory}) => {
+    // const [products, setProducts] = useState();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://world.openfoodfacts.org/cgi/search.pl?json=1&action=process&sort_by=random&page_size=100');
-                console.log(response.data.products)
-                setData(response.data.products);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const products = useContext(AppContext)
+    const filteredProducts = products.filter((item) => item.category === selectedCategory)
 
     return (
             <div className='catalog'>
-
                 {
-                    data.map((item) => (
-                        <div className='catalog__item' key={item.name}>
-                            <img src={item.image_url} alt=""/>
-                            <p>{item.ingredients_text}</p>
+                    filteredProducts.map((product) => (
+                        <div  className='catalog__item' key={product.id}>
+                            <img src={product.imageUrl} alt=""/>
+                            <p>{product.name}</p>
+                            <p>{product.price}</p>
                         </div>
                     ))
                 }
@@ -35,3 +25,17 @@ const Catalog = () => {
 };
 
 export default Catalog;
+
+// useEffect(() => {
+//     const fetchData = async () => {
+//         try {
+//             const response = await axios.get('https://world.openfoodfacts.org/cgi/search.pl?json=1&action=process&sort_by=random&page_size=100');
+//             console.log(response.products.products)
+//             setData(response.products.products);
+//         } catch (error) {
+//             console.error('Error fetching products:', error);
+//         }
+//     };
+//
+//     fetchData();
+// }, []);
