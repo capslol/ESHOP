@@ -8,9 +8,9 @@ const Catalog = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://swapi.dev/api/planets/');
-                console.log(response.data.results)
-                setData(response.data.results);
+                const response = await axios.get('https://world.openfoodfacts.org/cgi/search.pl?json=1&action=process&sort_by=random&page_size=100');
+                console.log(response.data.products)
+                setData(response.data.products);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -24,9 +24,9 @@ const Catalog = () => {
 
                 {
                     data.map((item) => (
-                        <div key={item.name}>
-                            <h1>{item.name}</h1>
-                            <p>{item.population}</p>
+                        <div className='catalog__item' key={item.name}>
+                            <img src={item.image_url} alt=""/>
+                            <p>{item.ingredients_text}</p>
                         </div>
                     ))
                 }
