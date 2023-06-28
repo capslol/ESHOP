@@ -1,7 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import axios from "axios";
 import './catalog.css'
 import AppContext from "../appContext";
+import CatalogItem from "../catalogItem/catalogItem";
 
 const Catalog = ({selectedCategory}) => {
     // const [products, setProducts] = useState();
@@ -13,11 +14,7 @@ const Catalog = ({selectedCategory}) => {
             <div className='catalog'>
                 {
                     filteredProducts.map((product) => (
-                        <div  className='catalog__item' key={product.id}>
-                            <img src={product.imageUrl} alt=""/>
-                            <p>{product.name}</p>
-                            <p>{product.price}</p>
-                        </div>
+                        <CatalogItem product={product} key={product.id}/>
                     ))
                 }
             </div>
