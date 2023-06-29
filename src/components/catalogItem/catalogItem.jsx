@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ReactModal from 'react-modal'
-
-
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
 
 
 const CatalogItem = ({product}) => {
@@ -14,17 +14,27 @@ const CatalogItem = ({product}) => {
     const closeModal = () => {
         setIsOpen(false)
     }
+    console.log(product.images[0])
     return (
+
         <>
-            <div className='catalog__item' onClick={openModal}>
-                <img src={product.imageUrl} alt=""/>
+            <div className='catalog__item'>
+                <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
                 <button type="submit">Add to cart</button>
             </div>
-            <ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay" shouldCloseOnOverlayClick={true}>
+            <ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"
+                        shouldCloseOnOverlayClick={true}>
                 <div className="modal">
-                    <img src={product.imageUrl} alt=""/>
+                    <Swiper>
+                        {product.images.map((image) => (
+                            <SwiperSlide className={'slider__item'}>
+                                <img src={image} alt=""/>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
                     <p>{product.name}</p>
                     <p>{product.price}</p>
                     <button type="submit">Add to cart</button>

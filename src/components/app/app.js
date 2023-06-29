@@ -24,7 +24,9 @@ const App = () => {
             name: "Футболка",
             category: "Футболки",
             price: 29.99,
-            imageUrl: "https://files.gifts.ru/reviewer/tb/13/6140.60_73_500.jpg"
+            imageUrl: "https://files.gifts.ru/reviewer/tb/13/6140.60_73_500.jpg",
+            images:['images/1.png','images/2.png','images/3.png']
+
         },
         {
             id: 2,
