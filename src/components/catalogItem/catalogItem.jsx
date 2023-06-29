@@ -28,7 +28,7 @@ const CatalogItem = ({product}) => {
                         shouldCloseOnOverlayClick={true}>
                 <div className="modal">
                     <Swiper>
-                        {product.images.map((image) => (
+                        {product.images && product.images.map((image) => (
                             <SwiperSlide className={'slider__item'}>
                                 <img src={image} alt=""/>
                             </SwiperSlide>
