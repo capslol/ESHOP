@@ -1,13 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ReactModal from 'react-modal'
+
+
+
 
 const CatalogItem = ({product}) => {
-    console.log()
+    const [isOpen, setIsOpen] = useState(false)
+
+    const openModal = () => {
+        setIsOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsOpen(false)
+    }
     return (
-        <div  className='catalog__item'>
-            <img src={product.imageUrl} alt=""/>
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-        </div>
+        <>
+            <div className='catalog__item' onClick={openModal}>
+                <img src={product.imageUrl} alt=""/>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
+                <button type="submit">Add to cart</button>
+            </div>
+            <ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay" shouldCloseOnOverlayClick={true}>
+                <div className="modal">
+                    <img src={product.imageUrl} alt=""/>
+                    <p>{product.name}</p>
+                    <p>{product.price}</p>
+                    <button type="submit">Add to cart</button>
+                </div>
+            </ReactModal>
+
+        </>
+
     );
 };
 
