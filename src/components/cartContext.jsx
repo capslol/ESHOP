@@ -19,7 +19,18 @@ export const CartProvider = ({ children }) => {
     }, [cartItems]);
 
     const addToCart = (item) => {
-        setCartItems((prevCartItems) => [...prevCartItems, item]);
+        const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
+        if (itemIndex !== -1) {
+            // Если товар уже есть в корзине, увеличиваем количество
+            setCartItems((prevCartItems) => {
+                const updatedCartItems = [...prevCartItems];
+                updatedCartItems[itemIndex].quantity += 1;
+                return updatedCartItems;
+            });
+        } else {
+            // Если товара нет в корзине, добавляем его
+            setCartItems((prevCartItems) => [...prevCartItems, { ...item, quantity: 1 }]);
+        }
     };
 
     const removeFromCart = (itemId) => {

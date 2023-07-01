@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "@emotion/styled";
 import './Header.css'
 
@@ -9,9 +9,12 @@ import cart_icon from './img/cart.svg'
 import catalog_icon from './img/3.svg'
 import promo_icon from './img/promo.svg'
 import {NavLink} from "react-router-dom";
+import {CartContext} from "../cartContext";
 
 
 const Header = () => {
+    const {cartItems} = useContext(CartContext)
+
     return (
         <header className='header'>
 
@@ -34,6 +37,7 @@ const Header = () => {
                 <NavLink to={'/cart'} className="header-nav__item">
                     <img className='header-img' src={cart_icon} alt=""/>
                     <span>PANIER</span>
+                    <span>{cartItems.length}</span>
                 </NavLink>
                 <NavLink to={'/promo'} className="header-nav__item">
                     <img className='header-img' src={promo_icon} alt=""/>
