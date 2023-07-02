@@ -1,0 +1,17 @@
+.cart{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+.cart__item{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+.cart__item div{
+    padding: 5px;
+    width: calc(100% / 4);
+    border: 1px solid #E6E6E6;
+    flex-grow: 1;
+}

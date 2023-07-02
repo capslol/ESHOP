@@ -20,7 +20,7 @@ const Catalog = ({selectedCategory}) => {
             <div className='catalog'>
                 {
                     filteredProducts.map((product) => (
-                        <CatalogItem onAddToCart={handleAddToCart} product={product} key={product.id}/>
+                        <CatalogItem onAddToCart={handleAddToCart} product={product}/>
                     ))
                 }
             </div>

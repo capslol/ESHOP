@@ -19,8 +19,8 @@ const CatalogItem = ({product, onAddToCart}) => {
     }
     return (
 
-        <>
-            <div className='catalog__item'>
+        <div key={product.id}>
+            <div key={product.id} className='catalog__item'>
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
@@ -43,7 +43,7 @@ const CatalogItem = ({product, onAddToCart}) => {
                 </div>
             </ReactModal>
 
-        </>
+        </div>
 
     );
 };
