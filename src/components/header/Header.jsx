@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import styled from "@emotion/styled";
 import './Header.css'
 
 import logo_icon from './img/logo.svg'
@@ -7,10 +8,13 @@ import home_icon from './img/2.svg'
 import cart_icon from './img/cart.svg'
 import catalog_icon from './img/3.svg'
 import promo_icon from './img/promo.svg'
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {CartContext} from "../cartContext";
 
 
 const Header = () => {
+    const {cartItems} = useContext(CartContext)
+
     return (
         <header className='header'>
 
@@ -18,26 +22,27 @@ const Header = () => {
 
             </div>
             <div className="header-nav">
-                <Link to={'/'} className="header-nav__item header-logo">
+                <NavLink to={'/'} className="header-nav__item header-logo">
                     <img className='header-img' src={logo_icon} alt=""/>
-                </Link>
+                </NavLink>
 
-                <Link to={'/'} className="header-nav__item">
+                <NavLink to={'/about'} className="header-nav__item">
                     <img className='header-img' src={home_icon} alt=""/>
                     <span>Page d'accueil</span>
-                </Link>
-                <Link to={'/catalog'} className="header-nav__item">
+                </NavLink>
+                <NavLink to={'/catalog'} className="header-nav__item">
                     <img className='header-img' src={catalog_icon} alt=""/>
                     <span>CataLOGUE</span>
-                </Link>
-                <Link to={''} className="header-nav__item">
+                </NavLink>
+                <NavLink to={'/cart'} className="header-nav__item">
                     <img className='header-img' src={cart_icon} alt=""/>
                     <span>PANIER</span>
-                </Link>
-                <Link to={''} className="header-nav__item">
+                    <span>{cartItems.length}</span>
+                </NavLink>
+                <NavLink to={'/promo'} className="header-nav__item">
                     <img className='header-img' src={promo_icon} alt=""/>
                     <span>PROMO</span>
-                </Link>
+                </NavLink>
 
             </div>
 

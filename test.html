@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Hartmann</title>
+    <script type="text/javascript" src="../JSLibrary/js/app.js"></script>
+
+    <link href="assets/_css/style_hartmann.css" rel="stylesheet">
+    <link href="assets/menu_hexagon/styles.css" rel="stylesheet">
+
+    <script src="js/libs/jquery/jquery-3.1.1.min.js"></script>
+    <script src="assets/menu_hexagon/js-menu_hexagon.js"></script>
+
+    <script>
+        sessionStorage.setItem('storage_indexSlideHexagon', "3");
+
+        var visitReportId = "{!Visit_Report__c.Id}";
+        var visit;
+
+        $(document).ready(function () {
+            document.addEventListener('WebViewJavascriptBridgeReady', function (event) {
+                getVisitInfo();
+                setEntryPointListener();
+                $('.loader').remove();
+            });
+        });
+
+        function getVisitInfo() {
+            var defer = $.Deferred();
+
+            if (visit) {
+                defer.resolve();
+                return;
+            }
+
+            var queryStr = "SELECT Id" +
+                ", EntryPoint__c" +
+                " FROM Visit_Report__c" +
+                " WHERE" +
+                " Id='" + visitReportId + "'";
+
+            ctm.query(queryStr, function (response) {
+                visit = response.result[0];
+                setLog(JSON.stringify(visit), true);
+                defer.resolve();
+            });
+
+            return defer.promise();
+        }
+
+        function setEntryPointListener() {
+            var elements = document.getElementsByClassName('entry-point');
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].addEventListener("click", function (event) {
+                    updateVisitEntryPoint(event.currentTarget.dataset.id);
+                });
+            }
+        }
+
+        function updateVisitEntryPoint(entryPoint) {
+            if (visit && visit.EntryPoint__c) return;
+
+            setLog('entryPoint= ' + entryPoint);
+            setLog('point= ' + visit.EntryPoint__c);
+
+            let visits = [];
+            visits.push({
+                SObject: "Visit_Report__c",
+                Id: visitReportId,
+                EntryPoint__c: entryPoint
+            });
+
+            ctm.update(visits, function (response) {
+                if (response.success) {
+                    visit.EntryPoint__c = entryPoint;
+                    setLog('update Activity success');
+                } else {
+                    setLog('update Activity error= ' + response.message);
+                }
+            });
+        }
+
+        function setLog(message, resetLog) {
+
+            let logger = document.getElementById('console-log');
+            if (!logger) return;
+
+            if (resetLog) {
+                logger.innerHTML = message;
+            } else {
+                logger.innerHTML = logger.innerHTML + "\n" + message;
+            }
+        };
+    </script>
+
+</head>
+
+
+<body>
+<div class="wrapper">
+
+    <!-- ______________________________________________________________________________________________________________ controls -->
+    <nav>
+        <div class="hartmann-logo"></div>
+
+        <!--   <a class="burger-menu block" href="#slide200">
+              <span></span>
+              <span></span>
+              <span></span>
+          </a>-->
+
+        <a class="hex-menu active" href="#slide3"></a>            <!--  hexagon menu  -->
+
+        <a class="information-btn" href="#slide202"></a>          <!--  information slide  -->
+    </nav>
+
+
+    <!-- ______________________________________________________________________________________________________________ content -->
+    <section class="Stage_base showON" id="Stage_base">
+
+        <article>
+
+            <h1>
+                <strong class="block">{!POSITION_1}</strong>
+            </h1>
+
+            <div class="hexagon-navigation">
+
+                <div class="navigation text-newsblue news" data-navigation="news">
+                    <div class="hexagon pos1 newsnavigationblue navigation-name" id="news">
+                        {!POSITION_2}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon pos2 steelblue filled">
+                            {!POSITION_3}
+                        </div>
+                        <div class="hexagon pos4 newsnavigationblue company-news" id="company-news">
+                            {!POSITION_4}
+                        </div>
+                        <div class="hexagon pos8 newsnavigationblue link-activities" id="link-activities">
+                            {!POSITION_36}
+                        </div>
+                        <a class="hexagon pos6 newsnavigationblue" href="#slide204">
+                            {!POSITION_5}
+                        </a>
+                    </div>
+
+                    <div class="subsubnavigation   nav_company-news">
+                        <div class="hexagon pos2 steelblue filled lighten">
+                            {!POSITION_6}
+                        </div>
+                        <div class="hexagon pos4 poloblue company-news company-news-colored">
+                            {!POSITION_4}
+                        </div>
+                        <a class="hexagon pos5 newsnavigationblue" href="#slide11">
+                            {!POSITION_7}
+                        </a>
+                        <a class="hexagon pos6 newsnavigationblue" href="#slide12">
+                            {!POSITION_8}
+                        </a>
+                    </div>
+
+                    <div class="subsubnavigation nav_link-activities">
+                        <div class="hexagon pos2 steelblue filled lighten">
+                            <span> {!POSITION_6} </span>
+                        </div>
+                        <div class="hexagon pos8 poloblue link-activities link-activities-colored">
+                            {!POSITION_36}
+                        </div>
+                        <a class="hexagon pos5 newsnavigationblue" href="#slide701">
+                            {!POSITION_37}
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="navigation text-zetuvitsilicone" data-navigation="indication">
+
+                    <div class="hexagon pos2 zetuvitsilicone entry-point navigation-name" id="indication" data-id="Indications">
+                        {!POSITION_9}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon conifer pos4 filled">
+                            {!POSITION_10}
+                        </div>
+                        <a class="hexagon zetuvitsilicone pos5" href="#slide21">
+                            {!POSITION_11}
+                        </a>
+                        <a class="hexagon zetuvitsilicone pos6" href="#slide31">
+                            {!POSITION_12}
+                        </a>
+                        <a class="hexagon zetuvitsilicone pos7" href="#slide41">
+                            {!POSITION_13}
+                        </a>
+                        <a class="hexagon zetuvitsilicone pos12" href="#slide91">
+                            {!POSITION_14}
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="navigation text-turkisdarkblue" data-navigation="medical-evidence">
+
+                    <div class="hexagon pos3 turkisdarkblue entry-point navigation-name medical-hexa" id="medical-evidence" data-id="Medical Evidence">
+                        {!POSITION_15}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon pos4 pelorous filled">
+                            {!POSITION_16}
+                        </div>
+                        <a class="hexagon pos8 medicalevidence" href="#slide51">
+                            {!POSITION_17}
+                        </a>
+                        <a class="hexagon pos5 medicalevidence" href="#slide61">
+                            {!POSITION_18}
+                        </a>
+                        <a class="hexagon pos6 medicalevidence" href="#slide71">
+                            {!POSITION_19}
+                        </a>
+                        <div class="hexagon pos7 medicalevidence" id="branolind_study">
+                            {!POSITION_31}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="navigation text-puetterflex" data-navigation="products">
+                    <div class="hexagon pos4 puetterflex entry-point navigation-name" id="products" data-id="Products">
+                        {!POSITION_20}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon pos6 lavendergrey filled">
+                            {!POSITION_21}
+                        </div>
+                        <a class="hexagon pos5 puetterflex font-4em products-overlay" href="#slide204">
+                            +
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="navigation text-orange orange" data-navigation="last-meeting">
+                    <div class="hexagon pos5 orange navigation-name" id="last-meeting">
+                        {!POSITION_22}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon pos4 casablanca filled">
+                            {!POSITION_23}
+                        </div>
+                        <a class="hexagon pos6 font-4em orange" href="#slide4">
+                            +
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="navigation text-coverflex" data-navigation="treatment-challenges">
+                    <div class="hexagon pos6 coverflex entry-point navigation-name" id="treatment-challenges" data-id="Treatment Challenges">
+                        {!POSITION_24}
+                    </div>
+                    <div class="subnavigation">
+                        <div class="hexagon pos11 burntsienna filled">
+                            {!POSITION_25}
+                        </div>
+                        <a class="hexagon pos1 coverflex" href="#slide181">
+                            <img src="assets/menu_hexagon/1.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p>{!POSITION_26}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos8 coverflex" href="#slide81">
+                            <img src="assets/menu_hexagon/2.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p>{!POSITION_28}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos5 coverflex" href="#slide111">
+                            <img src="assets/menu_hexagon/3.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p>{!POSITION_30}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos9 coverflex" href="#slide161">
+                            <img src="assets/menu_hexagon/4.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p> {!POSITION_27}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos2 coverflex" href="#slide446">
+                            <img src="assets/menu_hexagon/5.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p> {!POSITION_29}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos4 coverflex" href="#slide141">
+                            <img src="assets/menu_hexagon/6.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p> {!POSITION_32}</p>
+                            </div>
+                        </a>
+                        <a class="hexagon pos10 coverflex" href="#slide131">
+                            <img src="assets/menu_hexagon/7.png" class="wound-img">
+                            <div class="wound-txt flex-H-center-center">
+                                <p> {!POSITION_33}</p>
+                            </div>
+                        </a>
+                        <!--
+                                                <a class="hexagon pos3 coverflex" href="#slide101">
+                                        <img src="assets/menu_hexagon/8.png" class="wound-img">
+                                        <div class="wound-txt flex-H-center-center">
+                                            <p> {!POSITION_34}</p>
+                                        </div>
+                                    </a>
+                                     <a class="hexagon pos7 coverflex" href="#slide241">
+                                        <img src="assets/menu_hexagon/9.png" class="wound-img">
+                                        <div class="wound-txt flex-H-center-center">
+                                            <p> {!POSITION_35}</p>
+                                        </div>
+                                    </a>
+                        -->
+                    </div>
+                </div>
+
+            </div><!-- hexagon-navigation -->
+
+        </article>
+
+    </section><!-- Stage_base -->
+
+    <div class="loader">
+        <div class="cssload-spin-box"></div>
+    </div>
+
+    <!-- _____________________________________________________________________________________________________________________________ -->
+
+</div> <!-- wrapper -->
+
+</body>
+</html>
