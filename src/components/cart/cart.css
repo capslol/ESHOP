@@ -12,6 +12,15 @@
 .cart__item div{
     padding: 5px;
     width: calc(100% / 4);
-    border: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
     flex-grow: 1;
+}
+button{
+    width: 50px;
+    border-radius: 5px;
+    background: #DA1A43;
+    color: white;
+    padding: 3px;
+    outline: 0;
+    border: 0;
 }

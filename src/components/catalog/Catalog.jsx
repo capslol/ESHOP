@@ -7,12 +7,10 @@ import {useProducts} from "../ProductsProvider";
 
 const Catalog = ({selectedCategory}) => {
     const products = useProducts()
-    const { addToCart } = useCart()
 
 
-    const handleAddToCart = (product) => {
-        addToCart(product)
-    }
+
+
 
     const filteredProducts = products.filter((item) => item.category === selectedCategory)
 
@@ -20,7 +18,7 @@ const Catalog = ({selectedCategory}) => {
             <div  className='catalog'>
                 {
                     filteredProducts.map((product) => (
-                        <CatalogItem key={product.id} onAddToCart={handleAddToCart} product={product}/>
+                        <CatalogItem key={product.id}  product={product}/>
                     ))
                 }
             </div>

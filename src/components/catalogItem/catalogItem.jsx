@@ -4,10 +4,8 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import { useCart} from "../cartContext";
 
-
-const CatalogItem = ({product, onAddToCart}) => {
-    const {cartItems} = useCart()
-
+const CatalogItem = React.memo(({ product }) => {
+    const {cartItems, addToCart} = useCart()
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -19,6 +17,9 @@ const CatalogItem = ({product, onAddToCart}) => {
         setIsOpen(false)
     }
 
+
+    const selectedProduct = cartItems.find(item => item.id === product.id)
+    console.log(selectedProduct)
     return (
 
         <>
@@ -26,7 +27,10 @@ const CatalogItem = ({product, onAddToCart}) => {
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
-                <button onClick={() => onAddToCart(product)} type="submit">Add to cart</button>
+                <button onClick={() => addToCart(product)} type="submit">Add to cart</button>
+                {selectedProduct &&
+                    <div className="cart-counter">{selectedProduct.quantity}</div> }
+
             </div>
             <ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"
                         shouldCloseOnOverlayClick={true}>
@@ -48,6 +52,6 @@ const CatalogItem = ({product, onAddToCart}) => {
         </>
 
     );
-};
+})
 
 export default CatalogItem;

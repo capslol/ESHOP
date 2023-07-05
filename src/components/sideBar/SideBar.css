@@ -4,12 +4,23 @@
     flex-shrink: 0;
     background-color: #F2F2F2;
 }
-.sidebar__search-bar{
+.sidebar__search{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 109px;
     border-bottom: 1px solid #E6E6E6;
+}
+.search-bar{
+    width: 213px;
+    height: 36px;
+    flex-shrink: 0;
+    outline: 0;
+    border: 1px solid #CBCBCB;
+    border-radius: 10px;
+    padding-left: 50px;
+    box-sizing: border-box;
+
 }
 .sidebar__menu-item{
     width: 100%;
