@@ -1,6 +1,7 @@
 .sidebar{
     width: 287px;
     height: calc(100vh - 100px);
+    flex-shrink: 0;
     background-color: #F2F2F2;
 }
 .sidebar__search-bar{

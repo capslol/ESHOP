@@ -1,11 +1,12 @@
-import React, {useContext, useState} from 'react';
+import React, { useState} from 'react';
 import ReactModal from 'react-modal'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
-import {CartContext} from "../cartContext";
+import { useCart} from "../cartContext";
 
 
 const CatalogItem = ({product, onAddToCart}) => {
+    const {cartItems} = useCart()
 
 
     const [isOpen, setIsOpen] = useState(false)
@@ -17,10 +18,11 @@ const CatalogItem = ({product, onAddToCart}) => {
     const closeModal = () => {
         setIsOpen(false)
     }
+
     return (
 
-        <div>
-            <div  className='catalog__item'>
+        <>
+            <div  className={`catalog__item ${cartItems.some(item => item.id === product.id) ? 'catalog__item--active' : '' }`}>
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
@@ -30,8 +32,8 @@ const CatalogItem = ({product, onAddToCart}) => {
                         shouldCloseOnOverlayClick={true}>
                 <div className="modal">
                     <Swiper>
-                        {product.images && product.images.map((image) => (
-                            <SwiperSlide className={'slider__item'}>
+                        {product.images && product.images.map((image, index) => (
+                            <SwiperSlide key={index} className={'slider__item'}>
                                 <img src={image} alt=""/>
                             </SwiperSlide>
                         ))}
@@ -43,7 +45,7 @@ const CatalogItem = ({product, onAddToCart}) => {
                 </div>
             </ReactModal>
 
-        </div>
+        </>
 
     );
 };

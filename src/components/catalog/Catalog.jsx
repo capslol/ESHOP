@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 import axios from "axios";
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
-import {CartContext} from "../cartContext";
+import {CartContext, useCart} from "../cartContext";
 import {useProducts} from "../ProductsProvider";
 
 const Catalog = ({selectedCategory}) => {
     const products = useProducts()
-    const { addToCart } = useContext(CartContext)
+    const { addToCart } = useCart()
 
 
     const handleAddToCart = (product) => {

@@ -10,6 +10,22 @@ const products = [
         imageUrl: "https://files.gifts.ru/reviewer/tb/13/6140.60_73_500.jpg",
         images:['images/1.png','images/2.png','images/3.png']
 
+    },    {
+        id: 1342323446,
+        name: "Футболка2",
+        category: "T-shirts",
+        price: 19.99,
+        imageUrl: "https://files.gifts.ru/reviewer/tb/13/6140.60_73_500.jpg",
+        images:['images/1.png','images/2.png','images/3.png']
+
+    },    {
+        id: 134232343546,
+        name: "Футболка3",
+        category: "T-shirts",
+        price: 11.99,
+        imageUrl: "https://files.gifts.ru/reviewer/tb/13/6140.60_73_500.jpg",
+        images:['images/1.png','images/2.png','images/3.png']
+
     },
     {
         id: 234272347,
