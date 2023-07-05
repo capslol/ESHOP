@@ -9,14 +9,13 @@ import Catalog from "../../components/catalog/Catalog";
 const CatalogPage =  () => {
     const [selectedCategory, setSelectedCategory] = useState([1,2,3,4])
     const handleCategorySelect  = (category) => {
-        console.log(category)
         setSelectedCategory(category)
     }
 
 
     return (
         <div className={'catalog-wrapper'}>
-            <SideBar onSelectCategory={handleCategorySelect}/>
+            <SideBar selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect}/>
             <Catalog selectedCategory={selectedCategory}/>
         </div>
     );
