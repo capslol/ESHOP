@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import axios from "axios";
 import './catalog.css'
-import AppContext from "../appContext";
 import CatalogItem from "../catalogItem/catalogItem";
 import {CartContext} from "../cartContext";
+import {useProducts} from "../ProductsProvider";
 
 const Catalog = ({selectedCategory}) => {
-    const products = useContext(AppContext)
+    const products = useProducts()
     const { addToCart } = useContext(CartContext)
 
 
@@ -17,10 +17,10 @@ const Catalog = ({selectedCategory}) => {
     const filteredProducts = products.filter((item) => item.category === selectedCategory)
 
     return (
-            <div className='catalog'>
+            <div  className='catalog'>
                 {
                     filteredProducts.map((product) => (
-                        <CatalogItem onAddToCart={handleAddToCart} product={product}/>
+                        <CatalogItem key={product.id} onAddToCart={handleAddToCart} product={product}/>
                     ))
                 }
             </div>

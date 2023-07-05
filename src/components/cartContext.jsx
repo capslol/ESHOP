@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react';
-
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -19,6 +18,8 @@ export const CartProvider = ({ children }) => {
     }, [cartItems]);
 
     const addToCart = (item) => {
+        console.log(item)
+        console.log(cartItems)
         const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
         if (itemIndex !== -1) {
             // Если товар уже есть в корзине, увеличиваем количество
