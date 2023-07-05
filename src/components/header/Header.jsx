@@ -37,7 +37,7 @@ const Header = () => {
                 <NavLink to={'/cart'} className="header-nav__item">
                     <img className='header-img' src={cart_icon} alt=""/>
                     <span>PANIER</span>
-                    <span>{cartItems.length}</span>
+                    <span className={'header__cart-counter'}>{cartItems.length}</span>
                 </NavLink>
                 <NavLink to={'/promo'} className="header-nav__item">
                     <img className='header-img' src={promo_icon} alt=""/>
