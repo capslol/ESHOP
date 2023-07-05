@@ -3,7 +3,7 @@ export const ProductsContext = createContext();
 
 const products = [
     {
-        id: 1,
+        id: 1342346,
         name: "Футболка",
         category: "T-shirts",
         price: 29.99,
@@ -12,7 +12,7 @@ const products = [
 
     },
     {
-        id: 2,
+        id: 234272347,
         name: "Джинсы",
         category: "Pants",
         price: 59.99,
@@ -20,7 +20,7 @@ const products = [
         images:[]
     },
     {
-        id: 3,
+        id: 31346,
         name: "Платье",
         category: "Dresses",
         price: 79.99,
@@ -28,7 +28,7 @@ const products = [
         images:[]
     },
     {
-        id: 30,
+        id: 316430,
         name: "Куртка",
         category: "Jackets",
         price: 129.99,

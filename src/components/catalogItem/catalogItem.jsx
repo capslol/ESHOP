@@ -19,7 +19,7 @@ const CatalogItem = ({product, onAddToCart}) => {
     }
     return (
 
-        <div key={product.id}>
+        <div>
             <div  className='catalog__item'>
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
