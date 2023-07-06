@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import {ProductsContext} from "./ProductsProvider";
 export const CartContext = createContext();
 
@@ -18,9 +18,7 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (item) => {
-        console.log(item)
-        console.log(cartItems)
+    const addToCart = useCallback((item) => {
         const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
         if (itemIndex !== -1) {
             // Если товар уже есть в корзине, увеличиваем количество
@@ -33,13 +31,13 @@ export const CartProvider = ({ children }) => {
             // Если товара нет в корзине, добавляем его
             setCartItems((prevCartItems) => [...prevCartItems, { ...item, quantity: 1 }]);
         }
-    };
+    },[cartItems]);
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = useCallback((itemId) => {
         setCartItems((prevCartItems) =>
             prevCartItems.filter((item) => item.id !== itemId)
         );
-    };
+    },[]);
 
     return (
         <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>

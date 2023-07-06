@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import { useCart} from "../cartContext";
 
-const CatalogItem =({ product }) => {
+const CatalogItem = React.memo(({ product }) => {
     const {cartItems, addToCart} = useCart()
 
     const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +19,7 @@ const CatalogItem =({ product }) => {
 
 
     const selectedProduct = cartItems.find(item => item.id === product.id)
-    console.log(selectedProduct)
+    console.log('render catalog item')
     return (
 
         <>
@@ -52,6 +52,6 @@ const CatalogItem =({ product }) => {
         </>
 
     );
-}
+})
 
 export default CatalogItem;

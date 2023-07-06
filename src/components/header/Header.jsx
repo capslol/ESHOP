@@ -12,7 +12,7 @@ import {NavLink} from "react-router-dom";
 import {CartContext} from "../cartContext";
 
 
-const Header = () => {
+const Header = React.memo(() => {
     const {cartItems} = useContext(CartContext)
 
     return (
@@ -49,6 +49,6 @@ const Header = () => {
 
         </header>
     );
-};
+});
 
 export default Header;
