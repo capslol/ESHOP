@@ -9,7 +9,16 @@
     width: 100%;
     padding: 10px;
 }
-.cart__item div{
+.cart-header{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    margin-right: 50px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.cart__item div,
+.cart-header__item{
     padding: 5px;
     width: calc(100% / 4);
     border-bottom: 1px solid #E6E6E6;

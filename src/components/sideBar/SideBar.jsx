@@ -9,7 +9,7 @@ const SideBar = ({onSelectCategory, selectedCategory}) => {
 
     return (
         <div className='sidebar'>
-            <form className="sidebar__search"><input className='search-bar' type="text"/></form>
+            <form className="sidebar__search"><input placeholder='Search' className='search-bar' type="text"/></form>
             <ul className="sidebar__menu">
                 {
                     categories.map((item) => (

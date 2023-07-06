@@ -4,12 +4,12 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import { useCart} from "../cartContext";
 
-const CatalogItem = React.memo(({ product }) => {
+const CatalogItem =({ product }) => {
     const {cartItems, addToCart} = useCart()
 
     const [isOpen, setIsOpen] = useState(false)
 
-    const openModal = () => {
+    const openModal =  () => {
         setIsOpen(true)
     }
 
@@ -52,6 +52,6 @@ const CatalogItem = React.memo(({ product }) => {
         </>
 
     );
-})
+}
 
 export default CatalogItem;

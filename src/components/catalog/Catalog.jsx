@@ -8,10 +8,6 @@ import {useProducts} from "../ProductsProvider";
 const Catalog = ({selectedCategory}) => {
     const products = useProducts()
 
-
-
-
-
     const filteredProducts = products.filter((item) => item.category === selectedCategory)
 
     return (

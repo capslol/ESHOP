@@ -26,12 +26,12 @@
     cursor: pointer;
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 109px;
     border-bottom: 1px solid #E6E6E6;
     list-style: none;
     font-size: 30px;
+    padding-left: 47px;
 }
 .sidebar__menu-item--active{
     background: #FFF;
