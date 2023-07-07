@@ -1,23 +1,24 @@
-import React, {useContext} from 'react';
-import axios from "axios";
+import React, {useContext, useMemo} from 'react';
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
-import {CartContext, useCart} from "../cartContext";
 import {useProducts} from "../ProductsProvider";
 
 const Catalog = ({selectedCategory}) => {
     const products = useProducts()
 
-    const filteredProducts = products.filter((item) => item.category === selectedCategory)
+    const filteredProducts = useMemo(
+        () =>
+            products.filter((item) => item.category === selectedCategory),
+        [products, selectedCategory])
 
     return (
-            <div  className='catalog'>
-                {
-                    filteredProducts.map((product) => (
-                        <CatalogItem key={product.id}  product={product}/>
-                    ))
-                }
-            </div>
+        <div className='catalog'>
+            {
+                filteredProducts.map((product) => (
+                    <CatalogItem key={product.id} product={product}/>
+                ))
+            }
+        </div>
     )
 };
 
