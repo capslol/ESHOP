@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import ReactModal from 'react-modal'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
@@ -17,9 +17,14 @@ const CatalogItem = React.memo(({ product }) => {
         setIsOpen(false)
     }
 
+    useEffect(() => {
+        console.log('render catalog item')
+    })
 
-    const selectedProduct = cartItems.find(item => item.id === product.id)
-    console.log('render catalog item')
+    const selectedProduct = useMemo(
+        () => cartItems.find((item) => item.id === product.id),
+        [cartItems, product.id]
+    );
     return (
 
         <>

@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
             // Если товара нет в корзине, добавляем его
             setCartItems((prevCartItems) => [...prevCartItems, { ...item, quantity: 1 }]);
         }
-    },[cartItems]);
+    },[]);
 
     const removeFromCart = useCallback((itemId) => {
         setCartItems((prevCartItems) =>
