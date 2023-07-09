@@ -9,11 +9,11 @@ import cart_icon from './img/cart.svg'
 import catalog_icon from './img/3.svg'
 import promo_icon from './img/promo.svg'
 import {NavLink} from "react-router-dom";
-import {CartContext} from "../cartContext";
+import useCart from "../useCart";
 
 
-const Header = React.memo(() => {
-    const {cartItems} = useContext(CartContext)
+const Header = () => {
+    const {cartItems} = useCart()
 
     return (
         <header className='header'>
@@ -49,6 +49,6 @@ const Header = React.memo(() => {
 
         </header>
     );
-});
+}
 
 export default Header;

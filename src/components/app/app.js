@@ -4,7 +4,6 @@ import './app.css';
 import {Outlet} from "react-router-dom";
 import Header from "../header";
 import useAccessToken from "../useAccessToken";
-import {CartProvider} from "../cartContext";
 import {ProductsProvider} from "../ProductsProvider";
 
 
@@ -15,10 +14,8 @@ const App = () => {
     return (
         <>
             <ProductsProvider>
-                <CartProvider>
                     <Header/>
                     <Outlet/>
-                </CartProvider>
             </ProductsProvider>
         </>
     );
