@@ -1,10 +1,6 @@
-import React, {useCallback, useState} from 'react';
+import  {useCallback, useState} from 'react';
 
 const useCart = () => {
-    // const savedCartItems = localStorage.getItem('cartItems');
-    // if (savedCartItems) {
-    //     setCartItems(JSON.parse(savedCartItems));
-    // }
 
     const [cartItems, setCartItems] = useState([]);
 
