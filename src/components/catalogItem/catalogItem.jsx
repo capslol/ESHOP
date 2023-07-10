@@ -3,6 +3,7 @@ import ReactModal from 'react-modal'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import useCart from "../useCart";
+import CartItemsCounter from "../CartItemsCounter";
 
 
 const CatalogItem = React.memo(({ product }) => {
@@ -29,13 +30,15 @@ const CatalogItem = React.memo(({ product }) => {
     return (
 
         <>
-            <div  className={`catalog__item ${cartItems.some(item => item.id === product.id) ? 'catalog__item--active' : '' }`}>
+            <div  className='catalog__item'>
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
                 <button onClick={() => addToCart(product)} type="submit">Add to cart</button>
-                {selectedProduct &&
-                    <div className="cart-counter">{selectedProduct.quantity}</div> }
+                <CartItemsCounter productId={selectedProduct.id}/>
+
+                {/*{selectedProduct &&*/}
+                {/*    <div className="cart-counter">{selectedProduct.quantity}</div> }*/}
 
             </div>
             <ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"

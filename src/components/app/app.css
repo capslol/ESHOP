@@ -23,6 +23,7 @@
 body{
     margin: 0;
     padding: 0;
+
 }
 body * {
     font-family: "BigShouldersDisplay";
@@ -32,4 +33,6 @@ body * {
     display: flex;
     height: calc(100vh - 100px);
     width: 100vw;
+}
+.container{
 }
