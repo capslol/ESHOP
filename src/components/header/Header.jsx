@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import styled from "@emotion/styled";
 import './Header.css'
 
 import logo_icon from './img/logo.svg'
@@ -12,7 +11,7 @@ import {NavLink} from "react-router-dom";
 import useCart from "../useCart";
 
 
-const Header = () => {
+const Header = React.memo(() => {
     const {cartItems} = useCart()
 
     return (
@@ -49,6 +48,6 @@ const Header = () => {
 
         </header>
     );
-}
+});
 
 export default Header;
