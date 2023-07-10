@@ -11,6 +11,7 @@ import {NavLink} from "react-router-dom";
 import useCart from "../useCart";
 
 
+
 const Header = React.memo(() => {
     const {cartItems} = useCart()
 
