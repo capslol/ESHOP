@@ -8,14 +8,14 @@ import {CartProvider} from "../CartProvider";
 
 const App = () => {
     return (
-        <>
+        <div className="app-container">
             <ProductsProvider>
                 <CartProvider>
                     <Header/>
                     <Outlet/>
                 </CartProvider>
             </ProductsProvider>
-        </>
+        </div>
     );
 };
 

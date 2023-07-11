@@ -1,19 +1,23 @@
 .header {
+    width: 100%;
     border-radius: 40px;
     padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-nav {
     padding: 0;
     margin: 0;
+    width: 40%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .header-nav__item,
 .header-nav__item a {
     position: relative;
-    margin: 0 20px;
     /*flex-grow: 1;*/
     text-decoration: none;
     display: flex;
@@ -24,9 +28,9 @@
 }
 
 .header-nav__item span {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
+    line-height: 1.25;
+    font-size: 1rem;
+    font-weight: 400;
     /* identical to box height */
     letter-spacing: 0.005em;
     text-transform: uppercase;

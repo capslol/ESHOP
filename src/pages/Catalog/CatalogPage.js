@@ -7,7 +7,7 @@ import Catalog from "../../components/catalog/Catalog";
 
 
 const CatalogPage =  () => {
-    const [selectedCategory, setSelectedCategory] = useState([1,2,3,4])
+    const [selectedCategory, setSelectedCategory] = useState()
     const handleCategorySelect  = (category) => {
         setSelectedCategory(category)
     }

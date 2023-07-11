@@ -1,18 +1,31 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
 import {useProducts} from "../ProductsProvider";
 
 const Catalog = ({selectedCategory}) => {
+    const [query, setQuery] = useState()
+    const handleOnSearch = ({ currentTarget = {} }) => {
+        const { value } = currentTarget
+        setQuery(value)
+    }
     const products = useProducts()
 
     const filteredProducts = useMemo(
         () =>
-            products.filter((item) => item.category === selectedCategory),
+            selectedCategory ?
+            products.filter((item) => item.category === selectedCategory) : products,
         [products, selectedCategory])
 
     return (
         <div className='catalog'>
+            <form className="search-wrapper">
+                <input placeholder='Search'
+                       className='search-bar'
+                       type="text"
+                       onChange={handleOnSearch}
+                       value={query}/>
+            </form>
             {
                 filteredProducts.map((product) => (
                     <CatalogItem key={product.id} product={product}/>

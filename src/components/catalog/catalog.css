@@ -1,24 +1,25 @@
-.catalog-wrapper{
+.catalog-wrapper {
     display: flex;
-    width: 100vw;
 }
-.catalog{
-    overflow-y: scroll;
+
+.catalog {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 36px;
+    padding: 0 36px;
     height: auto;
-    flex-grow: 1;
+    flex: 1;
+    justify-content: space-between;
 }
-.catalog__item{
+
+.catalog__item {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 321px;
+    margin-bottom: 5%;
+    width: 45%;
     height: 298px;
-    margin: 10px 10px;
     flex-shrink: 0;
     border-radius: 10px;
     border: 1px solid #D8D8D8;
@@ -26,7 +27,8 @@
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.cart-counter{
+
+.cart-counter {
     position: absolute;
     top: 19px;
     right: 13px;
@@ -38,14 +40,17 @@
     justify-content: center;
     align-items: center;
 }
-.catalog__item--active{
+
+.catalog__item--active {
     border: 1px solid #21FF38;
 }
+
 .catalog__item:hover {
     transform: scale(1.01);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.catalog__item button{
+
+.catalog__item button {
     width: 134px;
     height: 32px;
     border-radius: 5px;
@@ -59,19 +64,23 @@
     align-items: center;
     flex-shrink: 0;
 }
-.catalog__item img{
+
+.catalog__item img {
     width: 100px;
 }
-.catalog__item p{
+
+.catalog__item p {
     font-size: 10px;
 }
-.modal{
+
+.modal {
     /*display: flex;*/
     /*flex-direction: column;*/
     /*align-items: center;*/
     /*justify-content: center;*/
 }
-.modal-overlay{
+
+.modal-overlay {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -81,6 +90,24 @@
 
 }
 
-.slider__item img{
+.search-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 1%;
+}
+
+.search-bar {
+    width: 20%;
+    height: 36px;
+    flex-shrink: 0;
+    outline: 0;
+    border: 1px solid #CBCBCB;
+    border-radius: 10px;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+.slider__item img {
     width: 50%;
 }

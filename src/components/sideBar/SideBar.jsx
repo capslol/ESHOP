@@ -3,24 +3,13 @@ import './SideBar.css';
 
 
 const SideBar = ({onSelectCategory, selectedCategory}) => {
-    const [query, setQuery] = useState()
 
     const [categories, setCategories] = useState(['T-shirts', 'Pants', 'Dresses', 'Jackets'])
 
-    const handleOnSearch = ({ currentTarget = {} }) => {
-        const { value } = currentTarget
-        setQuery(value)
-    }
+
 
     return (
         <div className='sidebar'>
-            <form className="sidebar__search">
-                <input placeholder='Search'
-                       className='search-bar'
-                       type="text"
-                       onChange={handleOnSearch}
-                       value={query}/>
-            </form>
             <ul className="sidebar__menu">
                 {
                     categories.map((item) => (

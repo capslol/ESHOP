@@ -17,8 +17,9 @@
     font-weight: 700;
     font-style: normal;
 }
-
-
+html{
+    font-size: 26px;
+}
 
 body{
     margin: 0;
@@ -34,5 +35,10 @@ body * {
     height: calc(100vh - 100px);
     width: 100vw;
 }
-.container{
+.app-container{
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
