@@ -1,9 +1,6 @@
 import React from 'react';
 import './Header.css'
-
-
 import {NavLink} from "react-router-dom";
-import useCart from "../useCart";
 import CartItemsCounter from "../CartItemsCounter";
 
 
@@ -12,13 +9,7 @@ const Header = () => {
 
     return (
         <header className='header'>
-
-            <div className="header-logo">
-
-            </div>
             <div className="header-nav">
-
-
                 <NavLink to={'/'} className="header-nav__item">
                     <span>Home</span>
                 </NavLink>
@@ -32,10 +23,7 @@ const Header = () => {
                 <NavLink to={'/promo'} className="header-nav__item">
                     <span>Promo</span>
                 </NavLink>
-
             </div>
-
-
         </header>
     );
 }

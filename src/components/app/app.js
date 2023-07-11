@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './app.css';
 import {Outlet} from "react-router-dom";
 import Header from "../header";
-import useAccessToken from "../useAccessToken";
 import {ProductsProvider} from "../ProductsProvider";
-
-
-// const queryClient = new QueryClient()
-
+import {CartProvider} from "../CartProvider";
 
 const App = () => {
     return (
         <>
             <ProductsProvider>
+                <CartProvider>
                     <Header/>
                     <Outlet/>
+                </CartProvider>
             </ProductsProvider>
         </>
     );

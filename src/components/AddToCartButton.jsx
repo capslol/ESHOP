@@ -1,5 +1,5 @@
 import React from 'react';
-import useCart from "./useCart";
+import {useCart} from "./CartProvider";
 
 const AddToCartButton = ({product}) => {
     const {addToCart} = useCart()

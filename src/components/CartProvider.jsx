@@ -1,7 +1,8 @@
-import  {useCallback, useState} from 'react';
+import React, {createContext, useCallback, useContext, useEffect, useMemo, useState} from 'react';
+import {ProductsContext} from "./ProductsProvider";
+export const CartContext = createContext();
 
-const useCart = () => {
-
+export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = useCallback((item) => {
@@ -19,19 +20,19 @@ const useCart = () => {
         }
     },[cartItems]);
 
-
     const removeFromCart = useCallback((itemId) => {
         setCartItems((prevCartItems) =>
             prevCartItems.filter((item) => item.id !== itemId)
         );
     },[]);
 
-    return {
-        cartItems,
-        addToCart,
-        removeFromCart
-    }
+    return (
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+            {children}
+        </CartContext.Provider>
+    );
+};
+
+export const useCart =  () => {
+    return useContext(CartContext)
 }
-export default useCart;
-
-

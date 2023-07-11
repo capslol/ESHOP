@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import useCart from "./useCart";
+import {useCart} from "./CartProvider";
 
 
 const CartItemsCounter = ({productId}) => {
