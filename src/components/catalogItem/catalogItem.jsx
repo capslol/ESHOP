@@ -6,16 +6,17 @@ import CartItemsCounter from "../CartItemsCounter";
 import AddToCartButton from "../AddToCartButton";
 
 
-const CatalogItem = React.memo(({ product }) => {
+const CatalogItem = React.memo(({product}) => {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const openModal =  () => {
-        setIsOpen(true)
+    const openModal = () => {
+        setIsModalOpen(true)
+        console.log(isModalOpen)
     }
 
     const closeModal = () => {
-        setIsOpen(false)
+        setIsModalOpen(false)
     }
 
     useEffect(() => {
@@ -26,7 +27,7 @@ const CatalogItem = React.memo(({ product }) => {
     return (
 
         <>
-            <div  className='catalog__item'>
+            <div className='catalog__item'>
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
@@ -37,22 +38,24 @@ const CatalogItem = React.memo(({ product }) => {
                 {/*    <div className="cart-counter">{selectedProduct.quantity}</div> }*/}
 
             </div>
-            {/*<ReactModal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"*/}
-            {/*            shouldCloseOnOverlayClick={true}>*/}
-            {/*    <div className="modal">*/}
-            {/*        <Swiper>*/}
-            {/*            {product.images && product.images.map((image, index) => (*/}
-            {/*                <SwiperSlide key={index} className={'slider__item'}>*/}
-            {/*                    <img src={image} alt=""/>*/}
-            {/*                </SwiperSlide>*/}
-            {/*            ))}*/}
-            {/*        </Swiper>*/}
+            {isModalOpen &&
+                <ReactModal isOpen={isModalOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"
+                            shouldCloseOnOverlayClick={true}>
+                    <div className="modal">
+                        <Swiper>
+                            {product.images && product.images.map((image, index) => (
+                                <SwiperSlide key={index} className={'slider__item'}>
+                                    <img src={image} alt=""/>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
 
-            {/*        <p>{product.name}</p>*/}
-            {/*        <p>{product.price}</p>*/}
-            {/*        <button type="submit">Add to cart</button>*/}
-            {/*    </div>*/}
-            {/*</ReactModal>*/}
+                        <p>{product.name}</p>
+                        <p>{product.price}</p>
+                        <button type="submit">Add to cart</button>
+                    </div>
+                </ReactModal>
+            }
 
         </>
 

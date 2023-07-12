@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     padding-left: 36px;
-    height: auto;
+    height: max-content;
     flex: 1;
     justify-content: space-between;
 }
@@ -63,9 +63,11 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .catalog__item img {
+    cursor: pointer;
     width: 100px;
 }
 
@@ -95,6 +97,7 @@
     width: 100%;
     justify-content: flex-end;
     margin-bottom: 1%;
+    align-self: flex-start;
 }
 
 .search-bar {
