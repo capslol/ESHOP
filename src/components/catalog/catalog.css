@@ -5,7 +5,7 @@
 .catalog {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 36px;
+    padding-left: 36px;
     height: auto;
     flex: 1;
     justify-content: space-between;

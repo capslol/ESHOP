@@ -2,20 +2,29 @@ import React, {useContext, useMemo, useState} from 'react';
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
 import {useProducts} from "../ProductsProvider";
+import Fuse from "fuse.js";
 
 const Catalog = ({selectedCategory}) => {
-    const [query, setQuery] = useState()
-    const handleOnSearch = ({ currentTarget = {} }) => {
-        const { value } = currentTarget
-        setQuery(value)
-    }
+
     const products = useProducts()
 
-    const filteredProducts = useMemo(
-        () =>
-            selectedCategory ?
-            products.filter((item) => item.category === selectedCategory) : products,
-        [products, selectedCategory])
+    const filteredProducts = selectedCategory ? products.filter((item) => item.category === selectedCategory) : products
+
+    // search
+    const [query, setQuery] = useState('')
+
+    const fuse = new Fuse(filteredProducts, {
+        keys: ['name', 'category'],
+        includeScore: true
+    })
+    const results = fuse.search(query)
+    const productsToDisplay = query ? results.map(result => result.item) : filteredProducts
+    const handleOnSearch = ({currentTarget = {}}) => {
+        const {value} = currentTarget
+        setQuery(value)
+    } // search
+
+
 
     return (
         <div className='catalog'>
@@ -27,7 +36,7 @@ const Catalog = ({selectedCategory}) => {
                        value={query}/>
             </form>
             {
-                filteredProducts.map((product) => (
+                productsToDisplay.map((product) => (
                     <CatalogItem key={product.id} product={product}/>
                 ))
             }

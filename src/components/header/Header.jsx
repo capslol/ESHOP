@@ -5,10 +5,12 @@ import CartItemsCounter from "../CartItemsCounter";
 
 
 
+
 const Header = () => {
 
     return (
         <header className='header'>
+            <img className={'header_logo'} src="/images/logo.png" alt=""/>
             <div className="header-nav">
                 <NavLink to={'/'} className="header-nav__item">
                     <span>Home</span>
