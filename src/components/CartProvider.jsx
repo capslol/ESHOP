@@ -1,5 +1,4 @@
-import React, {createContext, useCallback, useContext, useEffect, useMemo, useState} from 'react';
-import {ProductsContext} from "./ProductsProvider";
+import React, {createContext, useCallback, useContext,  useState} from 'react';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {

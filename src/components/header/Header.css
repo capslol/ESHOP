@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100px;
+    background-color: var(--background);
 }
 .header_logo{
     max-width: 100%;
@@ -38,7 +39,6 @@
     /* identical to box height */
     letter-spacing: 0.005em;
     text-transform: uppercase;
-    color: black;
 
 }
 

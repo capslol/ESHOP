@@ -2,14 +2,16 @@ import React from 'react';
 import './Header.css'
 import {NavLink} from "react-router-dom";
 import CartItemsCounter from "../CartItemsCounter";
+import {useTheme} from "../ThemeProvider";
 
 
 
 
 const Header = () => {
+    const { changeTheme} = useTheme()
 
     return (
-        <header className='header'>
+        <header className='header' >
             <img className={'header_logo'} src="/images/logo.png" alt=""/>
             <div className="header-nav">
                 <NavLink to={'/'} className="header-nav__item">
@@ -25,6 +27,7 @@ const Header = () => {
                     <span>Cart</span>
                     <span className={'header__cart-counter'}><CartItemsCounter /></span>
                 </NavLink>
+                <button onClick={() => changeTheme()}></button>
             </div>
         </header>
     );

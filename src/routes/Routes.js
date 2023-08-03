@@ -7,6 +7,7 @@ import CatalogPage from "../pages/Catalog/CatalogPage";
 import NotFundPage from "../pages/NotFoundPage/NotFundPage";
 import SinglePage from "../pages/SinglePage/SinglePage";
 import Cart from "../components/cart/cart";
+import {useTheme} from "../components/ThemeProvider";
 
 // import SecureRoute from "./guards/SecureRoute";
 // import GuestRoute from "./guards/GuestRoute";
@@ -18,7 +19,7 @@ import Cart from "../components/cart/cart";
 const Routes = () => {
     return (
         <BaseRoutes>
-            <Route path={'/'} element={<App/>}>
+            <Route path={'/'} element={<App />} >
                 <Route index element={<HomePage />} />
                 <Route path={'catalog/'} element={<CatalogPage />} />
                 <Route path={'cart/'} element={<Cart />} />

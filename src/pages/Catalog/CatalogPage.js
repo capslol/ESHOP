@@ -3,10 +3,12 @@ import useAccessToken from "../../components/useAccessToken";
 import axios from "axios";
 import SideBar from "../../components/sideBar/SideBar";
 import Catalog from "../../components/catalog/Catalog";
+import {useTheme} from "../../components/ThemeProvider";
 
 
 
 const CatalogPage =  () => {
+    const {theme} = useTheme()
     const [selectedCategory, setSelectedCategory] = useState()
     const handleCategorySelect  = (category) => {
         setSelectedCategory(category)
@@ -14,7 +16,7 @@ const CatalogPage =  () => {
 
 
     return (
-        <div className={'catalog-wrapper'}>
+        <div className={'catalog-wrapper'} data-theme={theme}>
             <SideBar selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect}/>
             <Catalog selectedCategory={selectedCategory}/>
         </div>

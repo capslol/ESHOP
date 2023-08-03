@@ -9,6 +9,7 @@
     height: max-content;
     flex: 1;
     justify-content: space-between;
+    background-color: var(--background);
 }
 
 .catalog__item {
