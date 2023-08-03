@@ -1,7 +1,11 @@
 .header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    backdrop-filter: blur(10px);
+    background-color: hsla(0,0%,100%,.6);
     z-index: 2;
     width: 100%;
-    border-radius: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;

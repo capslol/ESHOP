@@ -1,4 +1,6 @@
 .sidebar{
+    position: sticky;
+    top: 100px;
     width: 23%;
     height: 500px;
 }
@@ -20,10 +22,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #E6E6E6;
     list-style: none;
     font-size: 30px;
-    padding-left: 47px;
     height: 100%;
 }
 .sidebar__menu-item--active{
