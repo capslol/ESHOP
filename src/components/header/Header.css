@@ -48,7 +48,7 @@
 
 
 .active {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--main-color);
 }
 
 .header__cart-counter {

@@ -2,13 +2,16 @@ import React, {useEffect, useMemo, useState} from 'react';
 import ReactModal from 'react-modal'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
-import CartItemsCounter from "../CartItemsCounter";
 import AddToCartButton from "../AddToCartButton";
+import './catalogItem.css'
+import {useTheme} from "../ThemeProvider";
 
 
 const CatalogItem = React.memo(({product}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const {theme} = useTheme()
 
     const openModal = () => {
         setIsModalOpen(true)
@@ -31,18 +34,16 @@ const CatalogItem = React.memo(({product}) => {
                 <img onClick={openModal} src={product.imageUrl} alt=""/>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
-                <AddToCartButton product={product}/>
-                <CartItemsCounter productId={product.id}/>
+                <AddToCartButton  product={product}/>
 
                 {/*{selectedProduct &&*/}
                 {/*    <div className="cart-counter">{selectedProduct.quantity}</div> }*/}
 
             </div>
             {isModalOpen &&
-                <ReactModal isOpen={isModalOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"
+                <ReactModal className={'modal'} isOpen={isModalOpen} onRequestClose={closeModal} overlayClassName="modal-overlay"
                             shouldCloseOnOverlayClick={true}>
-                    <div className="modal">
-                        <Swiper>
+                        <Swiper className={'slider'}>
                             {product.images && product.images.map((image, index) => (
                                 <SwiperSlide key={index} className={'slider__item'}>
                                     <img src={image} alt=""/>
@@ -52,8 +53,7 @@ const CatalogItem = React.memo(({product}) => {
 
                         <p>{product.name}</p>
                         <p>{product.price}</p>
-                        <button type="submit">Add to cart</button>
-                    </div>
+                    <AddToCartButton className='catalog__item-button' product={product}/>
                 </ReactModal>
             }
 

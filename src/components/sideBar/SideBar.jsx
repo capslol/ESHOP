@@ -15,7 +15,7 @@ const SideBar = ({onSelectCategory, selectedCategory}) => {
                     categories.map((item) => (
                         <li key={item} onClick={() => onSelectCategory(item)}
                             className={`sidebar__menu-item ${item === selectedCategory ? 'sidebar__menu-item--active' : ''}`}>{item}
-                            <div className="arrow"></div>
+
                         </li>
                     ))
                 }

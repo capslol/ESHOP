@@ -20,17 +20,18 @@
 
 :root{
     --background: #ffffff;
+    --background-secondary: #ffffff;
     --text-primary: black;
     --text-secondary: grey;
-    --main-color: #DA1A43;
+    --main-color: #40DF9F;
     --secondary-color: green;
     --main-border: #CBCBCB;
 }
 [data-theme='dark']{
-    --background: black;
+    --background: #22343C;
+    --background-secondary: #2A3C44;
     --text-primary: #ffffff ;
     --text-secondary: grey;
-    --main-color: #DA1A43;
     --secondary-color: green;
     --main-border: #CBCBCB;
 }
@@ -62,8 +63,11 @@ a {
     background-color: var(--background);
     color: var(--text-primary);
     width: 100%;
-    max-width: 1200px;
+    padding: 0 100px;
     margin: 0 auto;
     box-sizing: border-box;
-    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /*transition: all .5s;*/
 }

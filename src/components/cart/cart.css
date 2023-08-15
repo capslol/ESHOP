@@ -23,12 +23,12 @@
     border-bottom: 1px solid #E6E6E6;
     flex-grow: 1;
 }
-button{
+.cart__remove-btn{
     width: 50px;
     border-radius: 5px;
-    background: #DA1A43;
-    color: white;
-    padding: 3px;
+    background: var(--main-color);
+    color: var(--text-primary);
+    padding: 2px;
     outline: 0;
     border: 0;
 }

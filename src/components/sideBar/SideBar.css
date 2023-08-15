@@ -27,46 +27,11 @@
     height: 100%;
 }
 .sidebar__menu-item--active{
-    background: #FFF;
+    color: var(--main-color);
     border-color: black;
 }
 
-.sidebar__menu-item--active .arrow {
-    position: absolute;
-    right: 10px;
-    width: 45px;
-    height: 1px;
-    background-color: #000;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-    display: block;
-}
 
-.sidebar__menu-item--active .arrow::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 1px;
-    top: -2px;
-    right: -2px;
-    background-color: #000;
-    transform: rotate(45deg);
-}
-
-.sidebar__menu-item--active .arrow::before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 1px;
-    top: 2px;
-    right: -2px;
-    background-color: #000;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-    transform: rotate(-45deg);
-}
-
-.sidebar__menu-item--active .arrow::before .arrow:hover {
-    animation: arrow 1s linear infinite;
-}
 
 
 .sidebar__menu{
