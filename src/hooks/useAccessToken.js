@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {loginUser} from "../services/service";
+import {loginUser} from "../services/Auth";
 
 const accessTokenKey = 'accessToken'
 const useAccessToken = () => {

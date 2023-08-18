@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "../../components/form";
 import useAccessToken from "../../hooks/useAccessToken";
-import login from "../../services/service";
+import authorize from "../../services/Auth";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
@@ -10,10 +10,10 @@ const LoginPage = () => {
 
 
     const onLogin = async (data) => {
-        const user = await login(data.email, data.password)
+        const {accessToken} = await authorize(data.email, data.password)
 
-        if (user.accessToken){
-            set(user.accessToken)
+        if (accessToken){
+            set(accessToken)
             navigate('/')
         }
     }

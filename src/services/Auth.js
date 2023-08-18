@@ -1,9 +1,9 @@
 import axios, {isCancel, AxiosError} from 'axios';
 import useAccessToken from "../hooks/useAccessToken";
 
-const login = async (login, password) => {
+const authorize = async (login, password) => {
 
-    const res = await  axios.post('http://localhost:4000/auth/login',{
+    const res = await  axios.post('http://localhost:8000/api/auth/login',{
         email: login,
         password: password
     }, {
@@ -11,19 +11,22 @@ const login = async (login, password) => {
             Authorization: ""
         }
     })
+    console.log(res.data.access_token)
 
-    const user = await axios.get(`http://localhost:4000/users/${res.data.userId}`, {
+    const user = await axios.get(`http://localhost:8000/api/auth/user`, {
         headers:{
-            Authorization: `Bearer ${res.data.accessToken}`
+            Authorization: `Bearer ${res.data.access_token}`
         }
 
     })
+    console.log(user)
+
 
 
     // localStorage.setItem('user', JSON.stringify(res.data))
 
     return {
-        accessToken: res.data.accessToken,
+        accessToken: res.data.access_token,
         user: user.data
     }
 }
@@ -32,7 +35,7 @@ const login = async (login, password) => {
 
 
 
-export default login
+export default authorize
 
 
 // const loginUser = (login, password) => {

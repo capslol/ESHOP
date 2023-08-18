@@ -1,4 +1,4 @@
-import { Route, Routes as BaseRoutes}   from "react-router-dom";
+import {Route, Routes as BaseRoutes} from "react-router-dom";
 import App from "../components/app";
 
 import React from "react";
@@ -15,18 +15,19 @@ import LoginPage from "../pages/Auth/LoginPage";
 import LogoutPage from "../pages/Auth/LogoutPage";
 
 
-
 const Routes = () => {
     return (
         <BaseRoutes>
 
-            <Route path={'/'} element={<App />} >
-                <Route index element={<SecureRoute/>}
-                    <Route  element={<HomePage />} />
-                    <Route path={'catalog/'} element={<CatalogPage />} />
-                    <Route path={'cart/'} element={<Cart />} />
-                    <Route path={'*'} element={<NotFundPage />} />
+            <Route path={'/'} element={<App/>}>
+                <Route path={'/login'} element={<LoginPage/>}/>
+                <Route element={<SecureRoute/>}>
+                    <Route index element={<HomePage/>}/>
+                    <Route path={'catalog/'} element={<CatalogPage/>}/>
+                    <Route path={'cart/'} element={<Cart/>}/>
+                    <Route path={'*'} element={<NotFundPage/>}/>
                 </Route>
+
             </Route>
 
         </BaseRoutes>
