@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from "../../components/form";
-import useAccessToken from "../../components/useAccessToken";
+import useAccessToken from "../../hooks/useAccessToken";
 import login from "../../services/service";
 import {useNavigate} from "react-router-dom";
 
@@ -11,7 +11,6 @@ const LoginPage = () => {
 
     const onLogin = async (data) => {
         const user = await login(data.email, data.password)
-
 
         if (user.accessToken){
             set(user.accessToken)

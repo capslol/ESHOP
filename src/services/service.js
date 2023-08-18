@@ -1,8 +1,7 @@
 import axios, {isCancel, AxiosError} from 'axios';
-import useAccessToken from "../components/useAccessToken";
+import useAccessToken from "../hooks/useAccessToken";
 
 const login = async (login, password) => {
-
 
     const res = await  axios.post('http://localhost:4000/auth/login',{
         email: login,
@@ -12,7 +11,6 @@ const login = async (login, password) => {
             Authorization: ""
         }
     })
-
 
     const user = await axios.get(`http://localhost:4000/users/${res.data.userId}`, {
         headers:{

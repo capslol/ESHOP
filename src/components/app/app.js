@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './app.css';
-import {ProductsProvider} from "../ProductsProvider";
-import {CartProvider} from "../CartProvider";
-import {ThemeProvider} from "../ThemeProvider";
+import {ProductsProvider} from "../../contexts/ProductsProvider";
+import {CartProvider} from "../../contexts/CartProvider";
+import {ThemeProvider} from "../../contexts/ThemeProvider";
 import ThemeWrapper from "../ThemeWrapper";
 
 const App = () => {

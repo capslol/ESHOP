@@ -52,8 +52,8 @@
 }
 
 .header__cart-counter {
-    top: 0px;
-    right: -23px;
+    top: -5px;
+    right: -15px;
     display: flex;
     justify-content: center;
     align-items: center;

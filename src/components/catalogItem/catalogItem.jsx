@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import AddToCartButton from "../AddToCartButton";
 import './catalogItem.css'
-import {useTheme} from "../ThemeProvider";
+import {useTheme} from "../../contexts/ThemeProvider";
 
 
 const CatalogItem = React.memo(({product}) => {

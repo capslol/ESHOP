@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCart} from "./CartProvider";
+import {useCart} from "../contexts/CartProvider";
 import CartItemsCounter from "./CartItemsCounter";
 
 const AddToCartButton = ({product}) => {

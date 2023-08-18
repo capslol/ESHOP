@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import useAccessToken from "../../components/useAccessToken";
+import useAccessToken from "../../hooks/useAccessToken";
 import {Navigate, Outlet} from "react-router-dom";
 
 const LogoutPage = () => {

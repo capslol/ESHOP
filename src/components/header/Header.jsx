@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css'
 import {NavLink} from "react-router-dom";
 import CartItemsCounter from "../CartItemsCounter";
-import {useTheme} from "../ThemeProvider";
+import {useTheme} from "../../contexts/ThemeProvider";
 
 
 

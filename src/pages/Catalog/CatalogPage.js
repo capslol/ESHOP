@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import useAccessToken from "../../components/useAccessToken";
+import useAccessToken from "../../hooks/useAccessToken";
 import axios from "axios";
 import SideBar from "../../components/sideBar/SideBar";
 import Catalog from "../../components/catalog/Catalog";
-import {useTheme} from "../../components/ThemeProvider";
+import {useTheme} from "../../contexts/ThemeProvider";
 
 
 

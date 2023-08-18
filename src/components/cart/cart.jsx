@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import './cart.css'
-import {useCart} from "../CartProvider";
+import {useCart} from "../../contexts/CartProvider";
 
 const Cart = () => {
     const {cartItems, removeFromCart} = useCart()

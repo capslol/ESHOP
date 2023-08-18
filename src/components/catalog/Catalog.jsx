@@ -1,7 +1,7 @@
 import React, {useContext, useMemo, useState} from 'react';
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
-import {useProducts} from "../ProductsProvider";
+import {useProducts} from "../../contexts/ProductsProvider";
 import Fuse from "fuse.js";
 
 const Catalog = ({selectedCategory}) => {

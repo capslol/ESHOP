@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTheme} from "./ThemeProvider";
+import {useTheme} from "../contexts/ThemeProvider";
 import Header from "./header";
 import {Outlet} from "react-router-dom";
 
