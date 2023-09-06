@@ -1,10 +1,11 @@
 import React from 'react';
-import useAccessToken from "../../hooks/useAccessToken";
+
 import {Navigate, Outlet} from "react-router-dom";
 
 const SecureRoute = () => {
 
-    const {value} = useAccessToken()
+    // const {value} = useAccessToken()
+    const value = false
     if (!value) {
         return <Navigate to={'/login'} replace/>
     }

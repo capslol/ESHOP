@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import useAccessToken from "../../hooks/useAccessToken";
 import axios from "axios";
 import SideBar from "../../components/sideBar/SideBar";
 import Catalog from "../../components/catalog/Catalog";

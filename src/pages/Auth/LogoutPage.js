@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import useAccessToken from "../../hooks/useAccessToken";
 import {Navigate, Outlet} from "react-router-dom";
 
 const LogoutPage = () => {
-    const { remove } = useAccessToken()
+    // const { remove } = useAccessToken()
 
-    useEffect(() => {
-        remove()
-    },[remove])
+    // useEffect(() => {
+    //     remove()
+    // },[remove])
 
     return (
         <>
