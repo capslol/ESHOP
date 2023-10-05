@@ -1,28 +1,21 @@
 import React from 'react';
 import Form from "../../components/form";
-import authorize from "../../services/Auth";
 import {useNavigate} from "react-router-dom";
-import {useHTTP} from "../../contexts/HTTPProvider";
+import {useAuth} from "../../contexts/AuthProvider";
 
 const LoginPage = () => {
-    // const { set } = useAccessToken()
     const navigate = useNavigate()
-    const { setNewAccessToken } = useHTTP()
-
-    setNewAccessToken('test')
-
-
+    const { login } = useAuth()
 
 
     const onLogin = async (data) => {
-        const {accessToken} = await authorize(data.email, data.password)
+        const accessToken = await login(data.email, data.password)
+        console.log(accessToken)
 
         if (accessToken){
-            // set(accessToken)
             navigate('/')
         }
     }
-
 
     return (
         <div>

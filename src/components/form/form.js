@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './form.css'
 
-import {loginUser} from "../../services/Auth";
 import {useForm} from "react-hook-form";
 
 const Form = ({onSubmitForm}) => {
@@ -20,9 +19,6 @@ const Form = ({onSubmitForm}) => {
             password: ''
         }
     })
-
-
-
 
     return (
         <div className='container'>
