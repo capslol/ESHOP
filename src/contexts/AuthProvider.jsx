@@ -1,26 +1,18 @@
 import React, {createContext, useCallback, useContext, useMemo, useState} from 'react';
 import {useQuery} from 'react-query';
 import axios from 'axios';
+import {useHTTP} from "./HTTPProvider";
 
-const API_URL = 'http://localhost:8000/api';
-const accessTokenKey = 'accessToken'; // Добавляем ключ для localStorage
+
+
 
 export const AuthContext = createContext();
 
+const API_URL = 'http://localhost:8000/api';
+
+
 export const AuthProvider = ({children}) => {
-    // 1. Создаем состояние для хранения access token в контексте
-    const [accessToken, setAccessToken] = useState(localStorage.getItem(accessTokenKey) || null);
-
-    // 2. Создаем функции для управления access token
-    const setNewAccessToken = useCallback((newAccessToken) => {
-        localStorage.setItem(accessTokenKey, newAccessToken);
-        setAccessToken(newAccessToken);
-    }, []);
-
-    const removeAccessToken = useCallback(() => {
-        localStorage.removeItem(accessTokenKey);
-        setAccessToken(null);
-    }, []);
+    const { setNewAccessToken } = useHTTP()
 
     // 3. Используем React Query для получения информации о текущем пользователе
     // const user = useQuery(['users', 'current'], () => {
@@ -48,15 +40,13 @@ export const AuthProvider = ({children}) => {
             console.error('Ошибка входа:', error);
             throw error;
         }
-    }, [accessToken, setNewAccessToken, user]);
+    }, [, setNewAccessToken, user]);
 
     // 7. Создаем объект value для передачи в контекст
     const value = useMemo(() => ({
         user,
         login,
-        removeAccessToken,
-        accessToken
-    }), [user, login, removeAccessToken, accessToken]);
+    }), [user, login]);
 
     return (
         // 8. Предоставляем контекст с данными о пользователе и функцией для входа

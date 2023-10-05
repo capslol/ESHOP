@@ -6,7 +6,7 @@ import {useAuth} from "../../contexts/AuthProvider";
 
 const SecureRoute = () => {
 
-    const {accessToken} = useAuth()
+    const {accessToken} = useHTTP()
     console.log(accessToken)
     if (!accessToken) {
         return <Navigate to={'/login'} replace/>
