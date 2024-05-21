@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "03c2",
+      "email": "222@222",
+      "password": "222"
+    },
+    {
+      "email": "asd@mail.ru",
+      "password": "$2a$10$JRvH2UOijORAuJpa7.55iuxuzj0WvFO8lth8AdOMfGL9G3x207n6S",
+      "id": "N0I29uL"
+    },
+    {
+      "email": "asd@asd.ru",
+      "password": "$2a$10$wqf9RZ0VFNjPpu/xu1U.ZuEOAxNLMzPt8GAyzdIWsFTcUF2BF1cAa",
+      "id": "knfzr2G"
+    }
+  ]
+}

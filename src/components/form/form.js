@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './form.css'
 
-import {loginUser} from "../../services/service";
 import {useForm} from "react-hook-form";
 
 const Form = ({onSubmitForm}) => {
@@ -20,9 +19,6 @@ const Form = ({onSubmitForm}) => {
             password: ''
         }
     })
-
-
-
 
     return (
         <div className='container'>
@@ -47,7 +43,7 @@ const Form = ({onSubmitForm}) => {
                             }
                         })}/>
                 </label>
-                <input type='submit' disabled={!isValid}></input>
+                <input  type='submit' disabled={!isValid}></input>
             </form>
 
         </div>

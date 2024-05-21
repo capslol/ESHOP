@@ -18,18 +18,56 @@
     font-style: normal;
 }
 
+:root{
+    --background: #ffffff;
+    --background-secondary: #ffffff;
+    --text-primary: black;
+    --text-secondary: grey;
+    --main-color: #40DF9F;
+    --secondary-color: green;
+    --main-border: #CBCBCB;
+}
+[data-theme='dark']{
+    --background: #22343C;
+    --background-secondary: #2A3C44;
+    --text-primary: #ffffff ;
+    --text-secondary: grey;
+    --secondary-color: green;
+    --main-border: #CBCBCB;
+}
 
+html{
+    font-size: 26px;
+}
 
 body{
+
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
 }
 body * {
     font-family: "BigShouldersDisplay";
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+    color: inherit; /* Используем цвет, унаследованный от родителя */
+}
 .wrapper{
     display: flex;
     height: calc(100vh - 100px);
     width: 100vw;
+}
+.app-container{
+    background-color: var(--background);
+    color: var(--text-primary);
+    width: 100%;
+    padding: 0 100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /*transition: all .5s;*/
 }

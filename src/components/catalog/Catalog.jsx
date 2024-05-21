@@ -1,20 +1,42 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import './catalog.css'
 import CatalogItem from "../catalogItem/catalogItem";
-import {useProducts} from "../ProductsProvider";
+import {useProducts} from "../../contexts/ProductsProvider";
+import Fuse from "fuse.js";
 
 const Catalog = ({selectedCategory}) => {
+
     const products = useProducts()
 
-    const filteredProducts = useMemo(
-        () =>
-            products.filter((item) => item.category === selectedCategory),
-        [products, selectedCategory])
+    const filteredProducts = selectedCategory ? products.filter((item) => item.category === selectedCategory) : products
+
+    // search
+    const [query, setQuery] = useState('')
+
+    const fuse = new Fuse(filteredProducts, {
+        keys: ['name', 'category'],
+        includeScore: true
+    })
+    const results = fuse.search(query)
+    const productsToDisplay = query ? results.map(result => result.item) : filteredProducts
+    const handleOnSearch = ({currentTarget = {}}) => {
+        const {value} = currentTarget
+        setQuery(value)
+    } // search
+
+
 
     return (
         <div className='catalog'>
+            <form className="search-wrapper">
+                <input placeholder='Search'
+                       className='search-bar'
+                       type="text"
+                       onChange={handleOnSearch}
+                       value={query}/>
+            </form>
             {
-                filteredProducts.map((product) => (
+                productsToDisplay.map((product) => (
                     <CatalogItem key={product.id} product={product}/>
                 ))
             }
